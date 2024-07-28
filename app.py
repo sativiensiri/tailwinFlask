@@ -6,10 +6,10 @@ path = os.getcwd()
 data = os.path.join(path , "data.json")
 
 def getAllJobs():
-    global alljobs
     with open(data,"r",encoding='utf-8') as f:
         alljobs = json.load(f)
-        print(type(alljobs))
+
+    return alljobs
 
 def updateJob(newData):
     with open(data,"r",encoding='utf-8') as f:
@@ -79,11 +79,13 @@ app.secret_key = os.urandom(24)
 
 @app.route("/", methods = ['POST', 'GET'])
 def index():
+    alljobs = getAllJobs()
     flash("Welcome to Flask Job!", "success" )
     return render_template("home.html", status="home", alljobs=alljobs)
 
 @app.route("/jobs", methods = ['POST', 'GET'])
 def jobs():
+    alljobs = getAllJobs()
     return render_template("alljobs.html", status="jobs", alljobs=alljobs)
 
 @app.route("/add_job", methods = ['POST', 'GET'])
@@ -96,6 +98,7 @@ def job():
 
 @app.route("/get_job/<id>", methods = ['POST', 'GET'])
 def get_job(id):
+    alljobs = getAllJobs()
     for job in alljobs:
         if job['id'] == int(id):
             gjb = job
@@ -104,6 +107,7 @@ def get_job(id):
 
 @app.route("/edit_job", methods = ['POST', 'GET'])
 def edit_job():
+    alljobs = getAllJobs()
     if request.method == 'POST':
         id = request.form['jobID']
         for job in alljobs:
@@ -146,14 +150,16 @@ def update_job():
         }
 
         editJob(newData, id)
+        alljobs = getAllJobs()
         flash("Job has updated!", "success")
         return render_template("home.html", status="home", alljobs=alljobs)
     else:
-        # alljobs = getAllJobs()
+        alljobs = getAllJobs()
         return redirect(url_for("index", status="jobs", alljobs=alljobs))
 
 @app.route("/delete_job", methods = ['POST', 'GET'])
 def delete_job():
+    alljobs = getAllJobs()
     if request.method == 'POST':
         id = request.form['deletejobID']
         print(f'from delete_job route: {id}')
@@ -163,7 +169,8 @@ def delete_job():
                 deleteData(id)
                 # print(djb)
                 break
-        flash("Job deleted!", "success")
+    alljobs = getAllJobs()
+    flash("Job deleted!", "success")
     return render_template("home.html", status="home", alljobs=alljobs)
 
 @app.route("/add_newjob", methods = ['POST', 'GET'])
@@ -198,15 +205,17 @@ def add_newjob():
 
         print(newData)
         addJob(newData)
+        alljobs = getAllJobs()
         flash("Job added!", "success")
         return render_template("home.html", status="home", alljobs=alljobs)
     else:
+        alljobs = getAllJobs()
         return redirect(url_for("index", status="jobs", alljobs=alljobs))
 
 
 
 if __name__ == '__main__':
-    getAllJobs()
+    alljobs = getAllJobs()
     for job in alljobs:
         print(job['id'], job['type'], job['company'])
 

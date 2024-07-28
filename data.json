@@ -70,15 +70,15 @@
     }
   },
   {
-    "id": 6,
-    "title": "Front-End Engineer (Vue)",
+    "id": 7,
+    "title": "Front-End Engineer",
     "type": "Full-Time",
-    "description": "A challenge for you",
+    "description": "This is a new position for everyone",
     "location": "Bangkok Thailand",
-    "salary": "Under $50K",
+    "salary": "$60K - $70K",
     "company": {
       "name": "Viensiri Inc",
-      "description": "Leader of software company",
+      "description": "We are a very good company",
       "contactEmail": "viensiri@email.com",
       "contactPhone": "0819111158"
     }
