@@ -82,5 +82,33 @@
       "contactEmail": "viensiri@email.com",
       "contactPhone": "0819111158"
     }
+  },
+  {
+    "id": 8,
+    "title": "Backend-End Engineer (Flask)",
+    "type": "Full-Time",
+    "description": "The backend developer for Rest API",
+    "location": "Bangkok Thailand",
+    "salary": "$50K - $60K",
+    "company": {
+      "name": "Viensiri Inc",
+      "description": "We are a great company always",
+      "contactEmail": "viensiri@email.com",
+      "contactPhone": "0819111158"
+    }
+  },
+  {
+    "id": 9,
+    "title": "AI/ML Web report",
+    "type": "Full-Time",
+    "description": "Work with data scientist to develop AI/ML Web portal",
+    "location": "Bangkok Thailand",
+    "salary": "$70K - $80K",
+    "company": {
+      "name": "Viensiri Inc",
+      "description": "A great company ever",
+      "contactEmail": "viensiri@email.com",
+      "contactPhone": "0819111158"
+    }
   }
 ]

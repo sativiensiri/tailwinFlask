@@ -56,9 +56,13 @@ def deleteData(id):
     getAllJobs()
 
 def set_jid():
-    getAllJobs()
-    max_id = len(alljobs)
-    return max_id
+    alljobs = getAllJobs()
+    highest_id = 0
+    for job in alljobs:
+        if job['id'] >= highest_id:
+            highest_id = job['id']
+
+    return highest_id
 
 def addJob(newData):
     if newData:
